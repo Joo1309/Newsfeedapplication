@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rejon RP - Portfolio</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Roboto+Slab:wght@400;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* GLOBAL STYLES AND VARIABLES */
+        :root {
+            --primary-color: #007bff; /* Vibrant Blue */
+            --secondary-color: #2ecc71; /* Accent Green */
+            --text-color: #333;
+            --light-text-color: #f8f8f8;
+            --background-color: #f7f9fb; /* Light Page Background */
+            --card-background: #ffffff;
+            --dark-background: #2c3e50; /* Dark Navy for Header/Footer */
+
+            /* Attractive Fonts */
+            --heading-font: 'Roboto Slab', serif;
+            --body-font: 'Poppins', sans-serif;
+        }
+
+        /* Base and Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--body-font);
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--background-color);
+            scroll-behavior: smooth;
+        }
+
+        h1, h2, h3 {
+            font-family: var(--heading-font);
+            color: var(--dark-background);
+        }
+
+        /* SECTION HEADINGS - Modern Underline Effect */
+        h2 {
+            font-size: 2.5rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+            margin-bottom: 2rem;
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            bottom: 0;
+            width: 80px;
+            height: 4px;
+            background: var(--primary-color);
+            border-radius: 2px;
+        }
+
+        /* HEADER AND NAVIGATION */
+        header {
+            background: var(--dark-background);
+            padding: 1rem 5%;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--secondary-color);
+            letter-spacing: 1px;
+        }
+
+        nav ul {
+            list-style: none;
+        }
+
+        nav ul li {
+            display: inline-block;
+            margin-left: 30px;
+        }
+
+        nav a {
+            color: var(--light-text-color);
+            text-decoration: none;
+            font-weight: 600;
+            padding: 5px 0;
+            transition: color 0.3s, border-bottom 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--primary-color);
+            border-bottom: 2px solid var(--primary-color);
+        }
+
+        /* MAIN CONTENT SECTIONS */
+        section {
+            padding: 100px 5%; 
+            text-align: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .dark-section {
+            background: #eef1f5; /* Lighter background for contrast */
+        }
+
+        /* HOME/HERO SECTION */
+        .hero {
+            background: linear-gradient(135deg, #f7f9fb, #e4eaf2);
+            padding: 150px 20px;
+            height: 90vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            color: var(--dark-background);
+        }
+
+        .greeting, .tagline {
+            font-size: 1.2rem;
+            font-weight: 300;
+            margin-bottom: 15px;
+        }
+
+        .tagline {
+            font-weight: 400;
+        }
+
+        .tagline strong {
+            color: var(--primary-color);
+        }
+
+        /* BUTTON STYLING */
+        .button {
+            display: inline-block;
+            padding: 12px 30px;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            margin-top: 25px;
+            letter-spacing: 0.5px;
+            transition: background 0.3s, transform 0.3s, box-shadow 0.3s;
+        }
+
+        .primary-button {
+            background: var(--primary-color);
+            color: white;
+            box-shadow: 0 4px 10px rgba(0, 123, 255, 0.3);
+        }
+
+        .primary-button:hover {
+            background: #0056b3;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(0, 123, 255, 0.4);
+        }
+
+        .secondary-button {
+            background: var(--secondary-color);
+            color: var(--light-text-color);
+            box-shadow: 0 4px 10px rgba(46, 204, 113, 0.3);
+        }
+
+        .secondary-button:hover {
+            background: #27ae60;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(46, 204, 113, 0.4);
+        }
+
+        /* ABOUT SECTION */
+        .about-content {
+            max-width: 800px;
+            margin: 20px auto;
+            text-align: left;
+            font-size: 1.1rem;
+        }
+
+        /* SKILLS SECTION */
+        .skills-list {
+            list-style: none;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .skills-list li {
+            background: var(--card-background);
+            padding: 12px 25px;
+            border-radius: 8px;
+            font-weight: 600;
+            color: var(--text-color);
+            border: 1px solid #ddd;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+            transition: transform 0.2s;
+        }
+
+        .skills-list li:hover {
+            transform: translateY(-3px);
+            border-color: var(--primary-color);
+        }
+
+        /* PROJECTS SECTION */
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .project-card {
+            background: var(--card-background);
+            text-align: left;
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .project-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .project-card h3 {
+            color: var(--primary-color);
+            margin-bottom: 0.8rem;
+        }
+
+        .project-card p {
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+        }
+
+        .tech-tags {
+            margin-bottom: 1rem;
+        }
+
+        .tech-tags span {
+            display: inline-block;
+            background: #e0f7fa;
+            color: #00838f;
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            margin-right: 5px;
+            margin-bottom: 5px;
+        }
+
+        .project-link {
+            color: var(--secondary-color);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .project-link:hover {
+            text-decoration: underline;
+        }
+
+        /* CONTACT SECTION */
+        #contact p {
+            margin-bottom: 30px;
+            font-size: 1.1rem;
+        }
+
+        .social-links {
+            margin-top: 30px;
+        }
+
+        .social-links a {
+            color: var(--dark-background);
+            text-decoration: none;
+            margin: 0 15px;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+
+        .social-links a:hover {
+            color: var(--primary-color);
+        }
+
+
+        /* FOOTER */
+        footer {
+            text-align: center;
+            padding: 25px;
+            background: var(--dark-background);
+            color: var(--light-text-color);
+            font-size: 0.9rem;
+        }
+
+        /* MEDIA QUERIES (Responsiveness) */
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                padding: 1rem 5%;
+            }
+
+            nav ul {
+                margin-top: 10px;
+            }
+
+            nav ul li {
+                margin: 0 10px;
+            }
+            
+            .hero h1 {
+                font-size: 3rem;
+            }
+            
+            .greeting, .tagline {
+                font-size: 1rem;
+            }
+
+            h2 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+    </head>
+<body>
+    <header>
+        <div class="logo">Rejon RP</div>
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="home" class="hero">
+            <p class="greeting">Hello, I am...</p>
+            <h1>Rejon RP</h1>
+            <p class="tagline">A *Passionate Developer* | *Creative Problem-Solver* | *Innovative Thinker*</p>
+            <a href="#projects" class="button primary-button">View My Work</a>
+        </section>
+
+        <section id="about">
+            <h2>About Me</h2>
+            <div class="about-content">
+                <p>I specialize in building responsive, high-performance web applications using modern front-end and back-end technologies. My goal is to create intuitive and seamless user experiences.</p>
+                <p>With a background in [Your Field/Degree], I bring a blend of technical expertise and creative design to every project. When I'm not coding, you can find me [Your Hobbies/Interests, e.g., learning new tech, playing guitar, hiking].</p>
+            </div>
+        </section>
+
+        <section id="skills" class="dark-section">
+            <h2>Core Skills</h2>
+            <ul class="skills-list">
+                <li>HTML5 & CSS3</li>
+                <li>JavaScript (ES6+)</li>
+                <li>React / Vue.js / Angular</li>
+                <li>Node.js / Python / PHP</li>
+                <li>Databases (SQL/NoSQL)</li>
+                <li>Git & GitHub</li>
+                <li>UI/UX Design</li>
+            </ul>
+        </section>
+
+        <section id="projects">
+            <h2>Featured Projects</h2>
+            <div class="project-grid">
+                <div class="project-card">
+                    <h3>E-commerce Platform</h3>
+                    <p>A full-stack e-commerce site built with React and a secure REST API. Features include cart functionality, payment integration, and admin dashboard.</p>
+                    <div class="tech-tags"><span>React</span><span>Node.js</span><span>Stripe</span></div>
+                    <a href="#" target="_blank" class="project-link">View Demo &rarr;</a>
+                </div>
+                <div class="project-card">
+                    <h3>Data Visualization Dashboard</h3>
+                    <p>An interactive dashboard for tracking real-time business metrics. Developed using D3.js for complex charting and responsiveness.</p>
+                    <div class="tech-tags"><span>D3.js</span><span>Express</span><span>PostgreSQL</span></div>
+                    <a href="#" target="_blank" class="project-link">View Demo &rarr;</a>
+                </div>
+                <div class="project-card">
+                    <h3>Portfolio Website (This one!)</h3>
+                    <p>Designed and coded this responsive portfolio using modern HTML, CSS (Flexbox/Grid), and vanilla JavaScript for smooth scrolling effects.</p>
+                    <div class="tech-tags"><span>HTML</span><span>CSS Grid</span><span>JavaScript</span></div>
+                    <a href="#" target="_blank" class="project-link">Source Code &rarr;</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="dark-section">
+            <h2>Get In Touch</h2>
+            <p>I'm currently available for freelance opportunities or full-time roles. Let's build something amazing together!</p>
+            
+            <a href="mailto:rprejon13@gmail.com" class="button secondary-button">Email Me Directly</a>
+            
+            <div class="social-links">
+                <a href="https://linkedin.com/in/rejonrp" target="_blank">LinkedIn</a>
+                <a href="https://github.com/rejonrp" target="_blank">GitHub</a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Rejon RP. Built with dedication and code.</p>
+    </footer>
+
+    </body>
+</html>
